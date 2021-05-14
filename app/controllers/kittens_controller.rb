@@ -1,6 +1,11 @@
 class KittensController < ApplicationController
     def index
         @kittens = Kitten.all
+
+        respond_to do |format|
+            format.html
+            format.json { render :json => @kittens }
+        end
     end
 
     def show
@@ -16,7 +21,7 @@ class KittensController < ApplicationController
     end
 
     def create
-        @kitten = Kitten.build(kitten_params)
+        @kitten = Kitten.new(kitten_params)
 
         if @kitten.save
             flash[:success] = 'Kitten created!'

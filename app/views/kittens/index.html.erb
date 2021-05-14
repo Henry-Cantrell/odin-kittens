@@ -1,0 +1,12 @@
+<h1> Index page and kitten list </h1>
+
+<%= link_to 'Make a new kitten', new_kitten_path %>
+
+<% @kittens.each do |k| %>
+    <ul>
+        <li>
+            <%= k.name %>
+            <%= link_to 'Edit kitten', edit_kitten_path(k.id) %>
+        </li>
+    </ul>
+<% end %>
